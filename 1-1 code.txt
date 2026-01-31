@@ -1,0 +1,37 @@
+import java.util.Scanner;
+import java.text.NumberFormat;
+
+public class InvoiceApp {
+
+    public static void main(String[] args) {
+        System.out.println("Welcome to the Invoice Total Calculator");
+
+        Scanner sc = new Scanner(System.in);
+
+        // get subtotal from user
+        System.out.print("Enter subtotal: ");
+        double subtotal = sc.nextDouble();
+
+        // get discount percent
+        System.out.print("Enter discount percent: ");
+        double discountPercent = sc.nextDouble();
+
+        // calculate discount amount and total
+        double discountAmount = subtotal * discountPercent;
+        double total = subtotal - discountAmount;
+
+        // format numbers
+        NumberFormat currency = NumberFormat.getCurrencyInstance();
+        NumberFormat percent = NumberFormat.getPercentInstance();
+        percent.setMinimumFractionDigits(0);
+
+        // display results
+        System.out.println();
+        System.out.println("Subtotal:        " + currency.format(subtotal));
+        System.out.println("Discount percent:" + percent.format(discountPercent));
+        System.out.println("Discount amount: " + currency.format(discountAmount));
+        System.out.println("Invoice total:   " + currency.format(total));
+
+        sc.close();
+    }
+}
